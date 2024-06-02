@@ -23,12 +23,12 @@ def generate_launch_description():
                                            description='FPath to the ROS2 parameters file to use.')
 
     driver_node = LifecycleNode(package='cspc_lidar',
-                                node_executable='cspc_lidar',
-                                node_name='cspc_lidar',
+                                executable='cspc_lidar',
+                                name='cspc_lidar',
                                 output='screen',
                                 emulate_tty=True,
                                 parameters=[parameter_file],
-                                node_namespace='/',
+                                namespace='/',
                                 )
 
 
