@@ -106,16 +106,16 @@ int main(int argc, char **argv)
 	rclcpp::init(argc, argv);
 	auto node = rclcpp::Node::make_shared("cspc_lidar");
 	
-	node->declare_parameter("port");
+	node->declare_parameter<int>("port");
   	node->get_parameter("port", node_lidar.lidar_general_info.port);
 	
-	node->declare_parameter("baudrate");
+	node->declare_parameter<std::string>("baudrate");
   	node->get_parameter("baudrate", node_lidar.lidar_general_info.m_SerialBaudrate);
 
-	node->declare_parameter("frame_id");
+	node->declare_parameter<std::string>("frame_id");
   	node->get_parameter("frame_id", node_lidar.lidar_general_info.frame_id);
 	
-	node->declare_parameter("version");
+	node->declare_parameter<std::string>("version");
   	node->get_parameter("version", node_lidar.lidar_general_info.version);
 	//std::string frame_id = "base_scan";
 	rclcpp::Publisher<std_msgs::msg::String>::SharedPtr error_pub;

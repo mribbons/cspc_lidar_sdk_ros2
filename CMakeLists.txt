@@ -17,6 +17,7 @@ find_package(visualization_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(PCL 1.10 REQUIRED)
 #find_package(rosidl_default_generators REQUIRED)
+find_package(pcl_conversions REQUIRED PATHs /opt/ros/humble)
 
 include_directories(
   ${PROJECT_SOURCE_DIR}/include/cspc_lidar
@@ -35,6 +36,7 @@ ament_target_dependencies(cspc_lidar
   "sensor_msgs"
   "visualization_msgs"
   "geometry_msgs"
+  "pcl_conversions"
 )
 
 install(TARGETS
