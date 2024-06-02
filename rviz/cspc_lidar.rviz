@@ -1,0 +1,66 @@
+# my_config.rviz
+
+global_options:
+  background_color: 25 25 25     # 背景颜色为深灰色
+  fixed_frame: map                # 固定坐标系为'map'
+
+panels:                           # 配置面板
+- class: rviz2/DisplaysPanel
+  name: Displays
+  expanded: false
+
+- class: rviz2/ToolPropertiesPanel
+  name: Tool Properties
+  expanded: false
+
+- class: rviz2/ViewsPanel
+  name: Views
+  expanded: true
+
+- class: rviz2/TimePanel
+  name: Time
+  expanded: true
+
+# 添加一个3D视图
+view_controllers:
+- name: 'My View'
+  class: rviz2/OrbitViewController
+  target_frame: base_link      # 指定目标坐标系
+  distance: 5.0                # 相机与目标的距离
+  yaw: 0.0                     # 相机的偏航角
+  pitch: -1.0                  # 相机的俯仰角
+
+# 添加一个点云显示项
+displays:
+- name: 'PointCloud2'
+  enabled: true
+  type: rviz2/PointCloud2
+  topic: '/pointcloud_topic'
+  color_transformer: FlatColor
+  material: FlatColor
+
+# 添加一个机器人模型显示项
+- name: 'RobotModel'
+  enabled: true
+  type: rviz2/RobotModel
+  robot_description: $(find my_package)/urdf/my_robot.urdf
+  update_rate: 30
+
+# 添加一个路径显示项
+- name: 'Path'
+  enabled: true
+  type: rviz2/Path
+  topic: '/path_topic'
+  color: 255 0 0                # 路径的颜色为红色
+
+# 添加一个TF显示项
+- name: 'TF'
+  enabled: true
+  type: rviz2/TF
+
+# 添加一个LaserScan显示项
+- name: 'LaserScan'
+  enabled: true
+  type: rviz2/LaserScan
+  topic: '/laser_scan_topic'
+  color_transformer: Rainbow
